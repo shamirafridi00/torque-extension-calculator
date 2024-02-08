@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Torque Wrench Extension Calculator</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      overflow-x: hidden; /* Added to prevent horizontal overflow on mobile */
+    }
+
+    .calculator {
+      width: 100%;
+      max-width: 400px;
+      margin: 50px auto;
+      background-color: #1E3059;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      color: #FCCC80;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      text-align: left;
+      color: #FFFFFF;
+    }
+
+    input {
+      width: 80%;
+      padding: 10px;
+      margin: 5px 0;
+      box-sizing: border-box;
+    }
+
+    button {
+      background-color: #FCCC80;
+      color: #354683;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 40%;
+      box-sizing: border-box;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background-color: #FFD699;
+    }
+
+    #result {
+      margin-top: 10px;
+      color: #FFFFFF;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <h1>Torque Wrench Extension Calculator</h1>
+
+    <label for="actualTorque">Actual Torque (M2):</label>
+    <input type="number" id="actualTorque" placeholder="Enter actual torque">
+
+    <label for="normalLength">Normal Length of Wrench (L1):</label>
+    <input type="number" id="normalLength" placeholder="Enter normal length">
+
+    <label for="extendedLength">Extended Length of Wrench (L2):</label>
+    <input type="number" id="extendedLength" placeholder="Enter extended length">
+
+    <button onclick="calculateTorque()">Calculate Torque</button>
+
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function calculateTorque() {
+      var actualTorque = document.getElementById('actualTorque').value;
+      var normalLength = document.getElementById('normalLength').value;
+      var extendedLength = document.getElementById('extendedLength').value;
+
+      if (actualTorque && normalLength && extendedLength) {
+        var torqueSetting = (actualTorque * normalLength) / extendedLength;
+        document.getElementById('result').innerHTML = "Torque Setting: " + torqueSetting.toFixed(2) + " Nm";
+      } else {
+        document.getElementById('result').innerHTML = "Please fill in all fields.";
+      }
+    }
+  </script>
+
+</body>
+</html>
